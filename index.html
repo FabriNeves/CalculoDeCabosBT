@@ -18,7 +18,7 @@
         <p>Descrição:</p>
 
         <label for="correnteDeProjeto">Ip =</label>
-        <input type="number" id="correnteDeProjeto" min="0" max="1000" value="0" class="input-padrao">
+        <input type="number" id="correnteDeProjeto" min="0" max="1000" value="100" class="input-padrao">
         <label for="correnteDeProjeto"> A </label>
 
         <h2>Metodo de instalação</h2>
@@ -41,21 +41,21 @@
         <h2>Material</h2>
         <fieldset>
             <select name="material" id="selecaoMaterial">
-                <option value="CU">Cobre</option>
+                <option value="COBRE">Cobre</option>
                 <option value="AL">Alumínio</option>
             </select>
         </fieldset>
         <h2>Isolação</h2>
         <fieldset>
             <select name="isolacao" id="selecaoIsolacao">
-                <option value="EPR/XLPE"> EPR ou XLPE</option>
+                <option value="EPR"> EPR ou XLPE</option>
                 <option value="PVC"> PVC </option>
             </select>
         </fieldset>
         <h2>Número de condutores carregados</h2>
         <div class="tipoDeInstalacao">
             <fieldset>
-                <p> 
+                <p>
                     O número de condutores carregados a ser considerado é o dos
                     condutores efetivamente percorridos por corrente. Nos circuitos trifásicos com neutro, quando puder
                     ser
@@ -66,12 +66,12 @@
                     condutores carregados.
                 </p>
                 <select name="nCondutores" id="nCondutores">
-                    <option value="3">a - circuito trifásico sem neutro = 3 condutores carregados</option>
-                    <option value="4">b - circuito trifásico com neutro = 4 condutores carregados</option>
-                    <option value="2">c - circuito monofásico a 2 condutores = 2 condutores carregados </option>
-                    <option value="3">d - circuito monofásico a 3 condutores = 3 condutores carregados</option>
-                    <option value="2">e - circuito bifásico a 2 condutores = 2 condutores carregados</option>
-                    <option value="3">f - circuito bifásico a 3 condutores = 3 condutores carregados</option>
+                    <option value="3n">a - circuito trifásico sem neutro = 3 condutores carregados</option>
+                    <option value="3n">b - circuito trifásico com neutro = 4 condutores carregados</option>
+                    <option value="2n">c - circuito monofásico a 2 condutores = 2 condutores carregados </option>
+                    <option value="3n">d - circuito monofásico a 3 condutores = 3 condutores carregados</option>
+                    <option value="2n">e - circuito bifásico a 2 condutores = 2 condutores carregados</option>
+                    <option value="3n">f - circuito bifásico a 3 condutores = 3 condutores carregados</option>
                 </select>
             </fieldset>`
         </div>
@@ -87,8 +87,10 @@
         <p id="resultado">...</p>
         <button id="calcular">Testar!</button>
     </main>
-    <script src="./main.js"></script>
 
+    <script src="./js/html.js"></script>
+    <script src="./js/tabelasMetodosA_D.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
