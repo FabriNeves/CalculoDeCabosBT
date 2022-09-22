@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Calculo de Cabos de Baixa tensão</h1>
+    </header>
+    <main>
+        <h2>Corrente de Projeto </h2>
+        <p>Descrição:</p>
+
+        <label for="correnteDeProjeto">Ip =</label>
+        <input type="number" id="correnteDeProjeto" min="0" max="1000" value="0" class="input-padrao">
+        <label for="correnteDeProjeto"> A </label>
+
+        <h2>Metodo de instalação</h2>
+        <p>Descrição:</p>
+        <fieldset>
+            <select name="Metodo" id="selecaoMetodo">
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+            </select>
+
+            <!--Descrição do metodo -->
+        </fieldset>
+        <h2>Material</h2>
+        <fieldset>
+            <select name="material" id="selecaoMaterial">
+                <option value="CU">Cobre</option>
+                <option value="AL">Alumínio</option>
+            </select>
+        </fieldset>
+        <h2>Isolação</h2>
+        <fieldset>
+            <select name="isolacao" id="selecaoIsolacao">
+                <option value="EPR/XLPE"> EPR ou XLPE</option>
+                <option value="PVC"> PVC </option>
+            </select>
+        </fieldset>
+        <h2>Número de condutores carregados</h2>
+        <div class="tipoDeInstalacao">
+            <fieldset>
+                <p> 
+                    O número de condutores carregados a ser considerado é o dos
+                    condutores efetivamente percorridos por corrente. Nos circuitos trifásicos com neutro, quando puder
+                    ser
+                    admitido o equilíbrio das correntes nos condutores fase e quando não for prevista a circulação de
+                    correntes
+                    harmônicas no condutor neutro, este não deve ser computado, considerando-se, portanto, para o
+                    circuito, 3
+                    condutores carregados.
+                </p>
+                <select name="nCondutores" id="nCondutores">
+                    <option value="3">a - circuito trifásico sem neutro = 3 condutores carregados</option>
+                    <option value="4">b - circuito trifásico com neutro = 4 condutores carregados</option>
+                    <option value="2">c - circuito monofásico a 2 condutores = 2 condutores carregados </option>
+                    <option value="3">d - circuito monofásico a 3 condutores = 3 condutores carregados</option>
+                    <option value="2">e - circuito bifásico a 2 condutores = 2 condutores carregados</option>
+                    <option value="3">f - circuito bifásico a 3 condutores = 3 condutores carregados</option>
+                </select>
+            </fieldset>`
+        </div>
+        <h2>Correção de Temperatura</h2>
+        <label for="correcaoTemp">Temperatura </label>
+        <select name="localInsta" id="localInsta">
+            <legend>Temperatura Ambiente ou do Solo ?</legend>
+            <option value="Ambiente"> Ambiente </option>
+            <option value="Solo"> do Solo </option>
+        </select>
+        <input type="number" id="correcaoTemp" min="-30" max="50" value="20" class="input-padrao">
+        <label for="correcaoTemp">°C</label>
+        <p id="resultado">...</p>
+        <button id="calcular">Testar!</button>
+    </main>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
