@@ -2040,10 +2040,10 @@ const indiceMetodosE_G = ["E", "F", "G"];
 function extrairLista(tabela, coluna, metodoSelec) {
     const listTemp = [];    
     if (0 <= indiceMetodosA_D.indexOf(metodoSelec)) {
-        console.log("metodos : a b c d")
+        
         tabelasA_D[tabela].forEach(linha => listTemp.push(linha[coluna]));
     }else {
-         console.log("metodos : e f g")
+         
         tabelasEFG[tabela].forEach(linha => listTemp.push(linha[coluna]));
     }    
     return listTemp;
@@ -2060,11 +2060,11 @@ function retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCo
 //const listaSelecionada = retornalistaColuna("A1","AL","EPR","3n")
 
 
-function retornaOPrimeiroValorMaior(correnteProjeto, listaDasCorrentes) {
-    for (let i = 0; i < listaDasCorrentes.length; i++) {
-        const element = listaDasCorrentes[i];
-        if (element >= correnteProjeto) {
-            return listaDasCorrentes.indexOf(element);
+function retornaOPrimeiroValorMaior(valorProcurado, listaDeprocura) {
+    for (let i = 0; i < listaDeprocura.length; i++) {
+        const element = listaDeprocura[i];
+        if (element >= valorProcurado) {
+            return listaDeprocura.indexOf(element);
         }
     }
 }
@@ -2073,9 +2073,9 @@ function procuraCondutorCorrespondente(correnteProjeto, metodo, materialCondutor
     const listaSelecionada = retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCondutoresModo);
     const listaDeCondutoresValidos = retornalistaColuna("", materialCondutor, materialIsolacao, "s");
     const indice = retornaOPrimeiroValorMaior(correnteProjeto * 1, listaSelecionada);
-    console.log(indice)
-    console.log(correnteProjeto, metodo, materialCondutor, materialIsolacao, numeroCondutoresModo);
-    console.log(retornaOPrimeiroValorMaior(correnteProjeto, listaSelecionada));
+    //console.log(indice)
+    //console.log(correnteProjeto, metodo, materialCondutor, materialIsolacao, numeroCondutoresModo);
+    //console.log(retornaOPrimeiroValorMaior(correnteProjeto, listaSelecionada));
     return listaDeCondutoresValidos[indice];
 }
 

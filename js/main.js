@@ -4,20 +4,21 @@ const materialCondutorSelecionado = document.querySelector("#selecaoMaterial");
 const isolacao = document.querySelector("#selecaoIsolacao");
 const tipoDeinstalcao = document.querySelector(".tipoDeInstalacao");
 let numeroCondutores = document.querySelector("#nCondutores");
-const correcaoTempAmbiente = document.querySelector("#localInsta");
+const localInstalacaoAmb = document.querySelector("#localInsta");
 const correcaoTemp = document.querySelector("#correcaoTemp");
 const resultado = document.querySelector("#resultado");
 const botao = document.querySelector("button");
 
 function testCalcular() {
-    const a = correnteProjeto.value;
+    let a = correnteProjeto.value;
     const b = metodoInstalacao.value;
     const c = materialCondutorSelecionado.value;
     const d = isolacao.value;
     const e = numeroCondutores.value;
-
+    const valorCorrecao = correcaoDeTemperatura(correcaoTemp.value*1,localInstalacaoAmb.value,isolacao.value);
+    a = a/valorCorrecao;
     const result = procuraCondutorCorrespondente(a,b,c,d,e);
-    resultado.textContent = `${correnteProjeto.value}|${metodoInstalacao.value}|${materialCondutorSelecionado.value}|${isolacao.value}|${numeroCondutores.value}|${correcaoTempAmbiente.value}:${correcaoTemp.value}|${result}`;
+    resultado.textContent = `${correnteProjeto.value}|${metodoInstalacao.value}|${materialCondutorSelecionado.value}|${isolacao.value}|${numeroCondutores.value}|${localInstalacaoAmb.value}:${correcaoTemp.value}|${result}mm²|${valorCorrecao}`;
 }
 
 botao.onclick = function () {

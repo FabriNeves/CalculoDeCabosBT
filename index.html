@@ -79,10 +79,10 @@
         <label for="correcaoTemp">Temperatura </label>
         <select name="localInsta" id="localInsta">
             <legend>Temperatura Ambiente ou do Solo ?</legend>
-            <option value="Ambiente"> Ambiente </option>
-            <option value="Solo"> do Solo </option>
+            <option value="ambiente"> Ambiente </option>
+            <option value="solo"> do Solo </option>
         </select>
-        <input type="number" id="correcaoTemp" min="-30" max="50" value="20" class="input-padrao">
+        <input type="number" id="correcaoTemp" min="10" max="50" value="20" class="input-padrao">
         <label for="correcaoTemp">°C</label>
         <p id="resultado">...</p>
         <button id="calcular">Testar!</button>
@@ -90,7 +90,9 @@
 
     <script src="./js/html.js"></script>
     <script src="./js/tabelasMetodosA_D.js"></script>
+    <script src="./tabelas e txt/tempTabelas.js"></script>
     <script src="./js/main.js"></script>
+
 </body>
 
 </html>
