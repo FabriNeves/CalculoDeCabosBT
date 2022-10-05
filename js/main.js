@@ -18,7 +18,7 @@ function testCalcular() {
     const valorCorrecao = correcaoDeTemperatura(correcaoTemp.value*1,localInstalacaoAmb.value,isolacao.value);
     a = a/valorCorrecao;
     const result = procuraCondutorCorrespondente(a,b,c,d,e);
-    resultado.textContent = `${correnteProjeto.value}|${metodoInstalacao.value}|${materialCondutorSelecionado.value}|${isolacao.value}|${numeroCondutores.value}|${localInstalacaoAmb.value}:${correcaoTemp.value}|${result}mm²|${valorCorrecao}`;
+    resultado.textContent = `${correnteProjeto.value}|${metodoInstalacao.value}|${materialCondutorSelecionado.value}|${isolacao.value}|${numeroCondutores.value}|${localInstalacaoAmb.value}:${correcaoTemp.value}|${result}mm²|${valorCorrecao}`;csd
 }
 
 botao.onclick = function () {
