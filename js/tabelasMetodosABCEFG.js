@@ -2034,8 +2034,10 @@ const tabelasEFG = {
         }
     ]
 }
-const indiceMetodosA_D = ['A1', "A2", "B1", "B2", "C", "D"];
-const indiceMetodosE_G = ["E", "F", "G"];
+export const indiceMetodosA_D = ['A1', "A2", "B1", "B2", "C", "D"];
+export const indiceMetodosE_G = ["E", "F", "G"];
+
+import {retornaOPrimeiroValorMaior}  from "./percorrerListasMetodo.js"
 
 function extrairLista(tabela, coluna, metodoSelec) {
     const listTemp = [];    
@@ -2059,31 +2061,14 @@ function retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCo
 
 //const listaSelecionada = retornalistaColuna("A1","AL","EPR","3n")
 
-
-function retornaOPrimeiroValorMaior(valorProcurado, listaDeprocura) {
-    for (let i = 0; i < listaDeprocura.length; i++) {
-        const element = listaDeprocura[i];
-        if (element >= valorProcurado) {
-            return listaDeprocura.indexOf(element);
-        }
-    }
-}
-
-function procuraCondutorCorrespondente(correnteProjeto, metodo, materialCondutor, materialIsolacao, numeroCondutoresModo) {
+export function procuraCondutorCorrespondente(correnteProjeto, metodo, materialCondutor, materialIsolacao, numeroCondutoresModo) {
     const listaSelecionada = retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCondutoresModo);
     const listaDeCondutoresValidos = retornalistaColuna("", materialCondutor, materialIsolacao, "s");
-    const indice = retornaOPrimeiroValorMaior(correnteProjeto * 1, listaSelecionada);
-    //console.log(indice)
-    //console.log(correnteProjeto, metodo, materialCondutor, materialIsolacao, numeroCondutoresModo);
-    //console.log(retornaOPrimeiroValorMaior(correnteProjeto, listaSelecionada));
+    const indice = retornaOPrimeiroValorMaior(correnteProjeto * 1, listaSelecionada);   
     return listaDeCondutoresValidos[indice];
 }
 
-//console.log(retornaOPrimeiroValorMaior(180,listaSelecionada));
-//console.log(listaSelecionada[5]);
-//console.log(procuraCondutorCorrespondente(100,"A1","COBRE","EPR","2n"));
-//console.log(procuraCondutorCorrespondente(100,"A2","COBRE","EPR","2n"));
-//console.log(procuraCondutorCorrespondente(100,"A1","AL","EPR","2n"));
-//console.log(procuraCondutorCorrespondente(100, "F", "COBRE", "PVC", "3T"));
-//console.log(tabelas["tabela_EPR_COBRE"][2]["A22n"]);
-// objeto.tabela_PVC_AL.forEach(elemento => console.log(elemento["s"]));
+//console.log(procuraCondutorCorrespondente(150,"A1","COBRE","EPR","2n"));
+//console.log(procuraCondutorCorrespondente(250,"A2","COBRE","EPR","2n"));
+//console.log(procuraCondutorCorrespondente(300,"A1","AL","EPR","2n"));
+//console.log(procuraCondutorCorrespondente(400, "F", "COBRE", "PVC", "3T"));

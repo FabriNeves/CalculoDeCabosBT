@@ -1,6 +1,6 @@
 
 // html 
-const opcaoParaABCD =
+export const opcaoParaABCD =
     `<fieldset>
     <p> 
         O número de condutores carregados a ser considerado é o dos
@@ -22,7 +22,8 @@ const opcaoParaABCD =
     </select>
 </fieldset>`;
 
-const opcaoParaE =
+
+export const opcaoParaE =
 `<fieldset>
 <img src="./imagens/imagemMetodosEFG.png">   
 <select name="nCondutores" id="nCondutores">
@@ -31,7 +32,7 @@ const opcaoParaE =
 </select>
 </fieldset>`;
 
-const opcaoParaF =
+export const opcaoParaF =
 `<fieldset>
 <img src="./imagens/imagemMetodosEFG.png">   
 <select name="nCondutores" id="nCondutores">  
@@ -41,7 +42,7 @@ const opcaoParaF =
 </select>
 </fieldset>`;
 
-const opcaoParaG =
+export const opcaoParaG =
 `<fieldset>
 <img src="./imagens/imagemMetodosEFG.png">   
 <select name="nCondutores" id="nCondutores">
@@ -49,3 +50,5 @@ const opcaoParaG =
     <option value="3V">G - Cabos unipolares: Três condutores carregados,no mesmo plano|Espaçados na vertical</option>
 </select>
 </fieldset>`;
+
+

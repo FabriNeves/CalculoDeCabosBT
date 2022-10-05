@@ -1,7 +1,7 @@
 
 
 // # CÁLCULO DA QUEDA DE TENSÃO
-function quedaTensaoCorrenteAlternada(R, cosphi, Xl,composicaoCircuito) {
+function quedaTensaoCorrenteAlternada(R, cosphi, Xl, composicaoCircuito) {
 
     const senphi = Math.sqrt(1 - Math.pow(cosphi, 2));
     if (composicaoCircuito === 3) {
@@ -14,7 +14,7 @@ function quedaTensaoCorrenteAlternada(R, cosphi, Xl,composicaoCircuito) {
 }
 
 // ## Queda de tensão em %
-function quedaDeTensaoPorcento(deltaV, tensaoVCA) {
+export function quedaDeTensaoPorcento(deltaV, tensaoVCA) {
     //DeltaV%
     return (deltaV / tensaoVCA) * 100;
 }
@@ -118,48 +118,52 @@ function selecionadaKpParaMaterialCondutor(material_condutor) {
     }
 }
 
-function calculoIndutancia (GMD,diametroCondutor) {
-    return 0.05+0.2*Math.log1p(2*GMD/diametroCondutor);
+function calculoIndutancia(GMD, diametroCondutor) {
+    return 0.05 + 0.2 * Math.log1p(2 * GMD / diametroCondutor);
 }
 
-function calculoXL (L)  { 
-    const pi =3.14159265359;
+function calculoXL(L) {
+    const pi = 3.14159265359;
     const f = 60; // Hz
-    return 2*pi*f*L*1e-3;
+    return 2 * pi * f * L * 1e-3;
 }
 //console.log(quedaTensaoCorrenteAlternada(1,0.90,10,1,0.3,3));
 //console.log(quedaTensaoCorrenteAlternada(1,0.90,10,1,0.3,2));
 
 
 
-function MainFuncaoCalculoDeQueda(material_condutor, cosphi, correnteTransportada, comprimentoDoCircuito, numerodeCondutoresCarregados, material_De_Isolacao,secaoDoConduTor,diametroCondutor, distânciaEntreEixos,GMD) {
+export function MainFuncaoCalculoDeQueda(material_condutor, cosphi, correnteTransportada, comprimentoDoCircuito, numerodeCondutoresCarregados, material_De_Isolacao, secaoDoCondutor, diametroCondutor, distânciaEntreEixos, GMD) {
+
+    const feedback = `
+    ----Parametros de Calculo----
+    Material Condutor : ${material_condutor} | ${typeof(material_condutor)};
+    Cos phi : ${cosphi} | ${typeof(cosphi)};
+    Corrente Transportada: ${correnteTransportada} A | ${typeof(correnteTransportada)};
+    Comprimento do Circuito: ${comprimentoDoCircuito * 1000} Metros | ${typeof(comprimentoDoCircuito)};
+    Numero de Condutores Carregados: ${numerodeCondutoresCarregados} | ${typeof(numerodeCondutoresCarregados)};
+    Material de Isolação: ${material_De_Isolacao} | ${typeof(material_De_Isolacao)};
+    Area do Condutor : ${secaoDoCondutor} mm² | ${typeof(secaoDoCondutor)};
+    Diametro Condutor: ${diametroCondutor} mm | ${typeof(diametroCondutor)};
+    Distância Entre Eixos: ${distânciaEntreEixos} mm | ${typeof(distânciaEntreEixos)};
+    Geometric Mean Distance; ${GMD} | ${typeof(GMD)};
+    `;
+    //console.log(feedback);
 
     const Kp = selecionadaKpParaMaterialCondutor(material_condutor);
     const teta = calculaTeta(material_De_Isolacao);
     const alfa20 = calculoValorAlfa20(material_condutor);
-    const R0 = selecionaR0(material_condutor, secaoDoConduTor);
+    const R0 = selecionaR0(material_condutor, secaoDoCondutor);
     const Rlinha = calculoRlinha(R0, alfa20, teta);
     const Xp2 = calculaXp2(Rlinha, Kp);
     const Yp = calculaYp(Xp2, diametroCondutor, distânciaEntreEixos, numerodeCondutoresCarregados);
     const Xs2 = calculaXs_aoQuadrado(Rlinha);
     const Ys = calculaYs(Xs2);
     const R = resistenciaEletricaCorrenteAlternada(Rlinha, Ys, Yp);
-    const L = calculoIndutancia (GMD,diametroCondutor)
-    const XL = calculoXL (L);
-    const V_A_km = quedaTensaoCorrenteAlternada(R, cosphi, XL,numerodeCondutoresCarregados)
-    
-    const feedback = `
-        ----Parametros de Calculo----
-        Material Condutor : ${material_condutor};
-        Cos phi : ${cosphi};
-        Corrente Transportada: ${correnteTransportada} A;
-        Comprimento do Circuito: ${comprimentoDoCircuito*1000} Metros;
-        Numero de Condutores Carregados: ${numerodeCondutoresCarregados};
-        Material de Isolação: ${material_De_Isolacao};
-        Area do Condutor : ${secaoDoConduTor} mm²;
-        Diametro Condutor: ${diametroCondutor} mm;
-        Distância Entre Eixos: ${distânciaEntreEixos} mm;
-        Geometric Mean Distance; ${GMD};
+    const L = calculoIndutancia(GMD, diametroCondutor)
+    const XL = calculoXL(L);
+    const V_A_km = quedaTensaoCorrenteAlternada(R, cosphi, XL, numerodeCondutoresCarregados)
+
+    const feedback2 = `
         ----Calculo---
         V/A.Km = ${V_A_km};
         XL  = ${XL};
@@ -174,13 +178,16 @@ function MainFuncaoCalculoDeQueda(material_condutor, cosphi, correnteTransportad
         Alfa 20° = ${alfa20};
         Teta = ${teta};
         Kp = ${Kp};
-
-    `
-    console.log(feedback);
-    return V_A_km*correnteTransportada*comprimentoDoCircuito;
+    `;
+    //console.log(feedback2);
+    const resultado = V_A_km * correnteTransportada * comprimentoDoCircuito;
+    return resultado;
 
 }
 
                                     // material /cosphi / I/ Comprimento/ Fases/ Isolamento/ Seção / diametro/distancia / GMD
-console.log(MainFuncaoCalculoDeQueda("COBRE",0.8,100,0.200,3,"PVC",50,9.2,200,251.984));
-console.log(calculoXL(calculoIndutancia (12,12)));
+//console.log(MainFuncaoCalculoDeQueda("COBRE",0.95,100,0.200,3,"PVC",50,8.15,12,7,8.15));
+//console.log(calculoXL(calculoIndutancia (12,12)));
+
+
+// Diametro do condutor é de fato  diametro do cobre , não o diametro externo. 
