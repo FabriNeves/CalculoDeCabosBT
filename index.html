@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
@@ -84,14 +85,70 @@
         </select>
         <input type="number" id="correcaoTemp" min="10" max="50" value="20" class="input-padrao">
         <label for="correcaoTemp">°C</label>
-        <p id="resultado">...</p>
-        <button id="calcular">Testar!</button>
+        <div class="conteinerAgrupamentoCircuitos">
+            <h2>Agrupamento de circuitos </h2>
+            <p>Descrição:</p>
+            <label for="ReferenciasAgrupamentoCircuitos">Selecione referência :</label>
+            <select name="ReferenciaAgrupamentoCircuitos" id="ReferenciasAgrupamentoCircuitos">
+                <option value="Ref1">Em feixe: ao ar livre ou sobre superfície; embutidos; em conduto fechado | Métodos
+                    A até F</option>
+                <option value="Ref2">Camada única sobre parede, piso ou em bandeja não perfurada ou prateleira | Método
+                    C</option>
+                <option value="Ref3">Camada única no teto | Método C</option>
+                <option value="Ref4">Camada única em bandeja perfurada | Método F</option>
+                <option value="Ref5">Camada única sobre leito, suporte, etc.| Método F</option>
+            </select>
+            <br>
+            <select id="numeroDeCircuitos">
+                <legend for="numeroDeCircuitos">Numero de Circuitos:</legend>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9 a 11</option>
+                <option value="10">12 a 15</option>
+                <option value="11">16 a 19</option>
+                <option value="12">>=20</option>
+            </select>
+            <button id="calcularGeral">Calcular</button>
+            <p class="resultado">...</p>
+        </div>
+        <div class="containerQuedaDetensao">
+            <h2> Cálculo de Queda de Tensão </h2>
+            <label for="tensaoNominal">Tensão nominal da instalação</label>
+            <input type="number" id="tensaoNominal" value="220" class="input-padrao" min="1" max="1000">
+            <label for="tensaoNominal">V</label><br>
+            <label for="comprimento_Circuito">Comprimento Circuito</label>
+            <input type="number" id="comprimento_Circuito" value="200" class="input-padrao">
+            <label for="comprimento_Circuito">(Metros)</label><br>
+            <label for="diametro_Condutor">Diâmetro do Condutor</label>
+            <input type="number" id="diametro_Condutor" value="9.2" class="input-padrao">
+            <label for="diametro_Condutor">(mm)</label><br>
+            <label for="distancia_Entre_Eixos">Distância Entre Eixos</label>
+            <input type="number" id="distancia_Entre_Eixos" value="200" class="input-padrao">
+            <label for="distancia_Entre_Eixos">(mm)</label><br>
+            <label for="cosPhi">Cos Phi</label>
+            <input type="number" id="cosPhi" value="0.8" class="input-padrao"><br>
+            <div class="subConteinerQuedaDeTensao">
+                <h2> Calculadora de GMD </h2>
+                <img class="MetodosGMD" src="./imagens/GMDMetodos_preview_rev_1.png">
+            </div>
+            <label for="_gmd">GMD</label>
+            <input type="number" id="_gmd" value="251.984" class="input-padrao"><br>
+            <p class="resultado3">
+                ...
+            </p>
+            <button id="botao3">Calcular DeltaV</button>
+        </div>
     </main>
 
-    <script src="./js/html.js"></script>
-    <script src="./js/tabelasMetodosA_D.js"></script>
-    <script src="./tabelas e txt/tempTabelas.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/funcaoPrincipal.js"></script>
+    <script type="module" src="./js/main.js"></script>
+
 
 </body>
 
