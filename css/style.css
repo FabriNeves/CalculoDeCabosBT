@@ -26,6 +26,9 @@ p {
     line-height: 1.5em;
 }
 
+.tipoDeInstalacao {
+    transition: all 2s;
+}
 input {
     width: 100px;
     height: 17px;
