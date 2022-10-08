@@ -1,5 +1,11 @@
 
 
+
+export const secoesRetasDisponiveis = {
+    COBRE:[1.5, 2.5, 4, 6, 10, 16, 25, 35, 50, 70, 95, 120, 150, 185, 240, 300, 400, 500, 630],
+    AL:[10, 16, 25, 35, 50, 70, 95, 120, 150, 185, 240, 300, 400, 500, 630]
+}
+
 // # CÁLCULO DA QUEDA DE TENSÃO
 function quedaTensaoCorrenteAlternada(R, cosphi, Xl, composicaoCircuito) {
 
@@ -191,3 +197,7 @@ export function MainFuncaoCalculoDeQueda(material_condutor, cosphi, correnteTran
 
 
 // Diametro do condutor é de fato  diametro do cobre , não o diametro externo. 
+
+
+
+

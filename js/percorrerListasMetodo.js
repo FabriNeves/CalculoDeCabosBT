@@ -10,3 +10,15 @@ export function retornaOPrimeiroValorMaior(valorProcurado, listaDeprocura) {
     }
   }
 
+  export function retornaOPrimeiroValorMaior_e(valorProcurado, listaDeprocura) {
+    for (let i = 0; i < listaDeprocura.length; i++) {
+        const element = listaDeprocura[i];
+        if (element >= valorProcurado) {
+            return element;
+        }
+    }
+  }
+
+
+
+

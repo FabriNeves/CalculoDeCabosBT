@@ -22,13 +22,16 @@ const _gmd = document.querySelector("#_gmd");
 const botao3 = document.querySelector("#botao3");
 const resultado3 = document.querySelector(".resultado3");
 
+const secaoReta_quedaDeTensao = document.querySelector("#secaoReta_quedaDeTensao")
+
 
 import { opcaoParaABCD, opcaoParaE, opcaoParaF, opcaoParaG } from "./html.js";
 import { indiceMetodosA_D, indiceMetodosE_G, procuraCondutorCorrespondente } from "./tabelasMetodosABCEFG.js";
 import { tabela_AgrupamentoDeCircuitos } from "./agrupamentoDeCircuitos.js"
 import { correcaoDeTemperatura } from "./FatorTempTabelas.js";
-import { MainFuncaoCalculoDeQueda, quedaDeTensaoPorcento } from "./funcoesDeQuedaDeTensao.js";
+import { MainFuncaoCalculoDeQueda, quedaDeTensaoPorcento, secoesRetasDisponiveis } from "./funcoesDeQuedaDeTensao.js";
 import { retornaDiametroDoCondutor } from "./diametroCondutor.js";
+import { retornaOPrimeiroValorMaior_e } from "./percorrerListasMetodo.js";
 
 function calcularSecaoCabo(correnteProjeto) {
     // Variaveis para calcular seção do cabo 
@@ -50,7 +53,7 @@ function calcularSecaoCabo(correnteProjeto) {
     a = a / fatorDeCorrecao;
 
     const result = procuraCondutorCorrespondente(a, b, c, d, e);
-    const resultadoTexto = `<p>Corrente de Projeto :${correnteProjeto}A <br> Metodo de Instalação :${metodoInstalacao.value} <br>Material Condutor :${materialCondutorSelecionado.value} <br>Material de Isolação :${materialIsolacao.value} <br>Numero de Condutores Carregados :${numeroCondutores.value.substring(0, 1)}<br>Para temperatura do ${localInstalacaoAmb.value} de ${correcaoTemp.value}ºC valor de : ${valorCorrecao} <br>Fator de agrupamento de circuitos : ${fatorDeCorrecao} <br>Seção reta do Cabo : ${result}mm²</p>`;
+    const resultadoTexto = `<p class="Resultado">Corrente de Projeto :<info>${correnteProjeto}A</info></p><p class="Resultado"> Metodo de Instalação :<info>${metodoInstalacao.value}</info></p><p class="Resultado">Material Condutor :<info>${materialCondutorSelecionado.value}</info></p><p class="Resultado">Material de Isolação :<info>${materialIsolacao.value}</info></p><p class="Resultado">Numero de Condutores Carregados :<info>${numeroCondutores.value.substring(0, 1)}</info></p><p class="Resultado">Para temperatura do ${localInstalacaoAmb.value} de ${correcaoTemp.value}ºC valor de :<info> ${valorCorrecao} </info></p><p class="Resultado">Fator de agrupamento de circuitos :<info> ${fatorDeCorrecao} </info></p><p class="Resultado">Seção reta do Cabo :<info> ${result}mm²</info></p>`;
 
     diametro_Condutor_.value = retornaDiametroDoCondutor(result).toFixed(2); //Valor Aproximado 
     return [result, resultadoTexto];
@@ -59,6 +62,7 @@ function calcularSecaoCabo(correnteProjeto) {
 botao.onclick = function () {
     secaoReta_resultado = calcularSecaoCabo(correnteProjeto.value);
     console.log(secaoReta_resultado);
+    secaoReta_quedaDeTensao.value = secaoReta_resultado[0];
     resultado.innerHTML = secaoReta_resultado[1];
 }
 
@@ -89,21 +93,34 @@ botao2.onclick = function () {
 }
 */
 botao3.onclick = function () {
+    const val = retornaOPrimeiroValorMaior_e(Number(secaoReta_quedaDeTensao.value), secoesRetasDisponiveis[materialCondutorSelecionado.value]);
+    (val == false) ? val = 0.5 : "";
+    secaoReta_quedaDeTensao.value = val;
+    resultado3.innerHTML = CalculaQuedaDeTensao()
+}
+
+secaoReta_quedaDeTensao.onchange = function () {
+    diametro_Condutor_.value = retornaDiametroDoCondutor(secaoReta_quedaDeTensao.value).toFixed(2); //Valor Aproximado 
+}
+
+function CalculaQuedaDeTensao() {
     const a = String(materialCondutorSelecionado.value);
     const b = Number(cossenoPhi.value);
     const c = Number(correnteProjeto.value);
-    const d = Number(comprimentoDoCircuito_.value)/1000;
+    const d = Number(comprimentoDoCircuito_.value) / 1000;
     const e = Number(numeroCondutores.value.substring(0, 1));
-    //const e = 3;
     const f = String(materialIsolacao.value);
-    const g = Number(secaoReta_resultado[0]);
+    const g = Number(secaoReta_quedaDeTensao.value);
     if (g === 0) {
-        return console.log("Selecione uma Seção de Cabo");
+        console.log("Selecione uma Seção de Cabo");
+        return "Selecione uma Seção de Cabo";
     }
     const h = Number(diametro_Condutor_.value);
     const i = Number(distancia_Entre_Eixos_.value);
     const j = Number(_gmd.value);
+    console.log(a, b, c, d, e, f, g, h, i, j);
 
     const resultado = MainFuncaoCalculoDeQueda(a, b, c, d, e, f, g, h, i, j);
-    resultado3.textContent = "Queda de tensão de :" + quedaDeTensaoPorcento(resultado,tensaoNominal.value).toFixed(2)+"%";
+    return "<p class='Resultado'>Queda de tensão de :<info>" + quedaDeTensaoPorcento(resultado, tensaoNominal.value).toFixed(2) + "%</info></p>";
+
 }

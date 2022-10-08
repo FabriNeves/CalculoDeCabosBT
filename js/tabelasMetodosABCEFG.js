@@ -2053,7 +2053,7 @@ function extrairLista(tabela, coluna, metodoSelec) {
 
 //extrairLista("tabela_EPR_COBRE","s");
 
-function retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCondutoresModo) {
+export function retornalistaColuna(metodo, materialCondutor, materialIsolacao, numeroCondutoresModo) {
     const tabela = `tabela_${materialIsolacao}_${materialCondutor}`;
     const metodoENumeroCondutores = metodo + numeroCondutoresModo;
     return extrairLista(tabela, metodoENumeroCondutores,metodo);

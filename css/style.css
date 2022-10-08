@@ -1,0 +1,110 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: whitesmoke;
+    width: 640px;
+    margin: 0 auto;
+}
+
+h1 {
+    padding-top: 0.5em;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid black;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    margin: 1em auto;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+p {
+    margin: 1em 0;
+    line-height: 1.5em;
+}
+
+input {
+    width: 100px;
+    height: 17px;
+    padding: 3px;
+    border: solid 1px black;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px black;
+}
+
+#selecaoMaterial,
+#selecaoIsolacao,
+#selecaoIsolacao,
+#selecaoMetodo,
+#localInsta,
+#numeroDeCircuitos {
+    width: 100px;
+    padding: 3px;
+    border: solid 1px black;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px black;
+}
+
+#nCondutores,
+#ReferenciasAgrupamentoCircuitos {
+    margin: 1em 0;
+    padding: 3px;
+    border: solid 1px black;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px black;
+}
+
+p .Resultado {
+    margin: 0.5em 0;
+    color: blueviolet;
+    line-height: 1em;
+}
+info {
+    color: red;
+}
+.labelTitulo { 
+    display: block;
+    margin: 0.5em 0;
+}
+
+.aviso {
+    color: red;
+    font-size: x-small;
+    font-weight: 200;
+
+}
+
+.MetodosGMD {
+    border: solid 0.5px black;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    
+}
+
+button {
+    background: MediumSeaGreen;
+    width: 200px;
+    height: 40px;
+    font-size: 22px;
+    display: block;
+    text-align: center;
+    margin: 50px auto;
+    padding: 3px;
+    border: solid 1px SeaGreen;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px black;
+      
+    
+}
+
+button:hover {
+    background: LightGreen;
+    font-size: 23px;
+}
+
+button:active{
+    transform: scale(1.1);
+}
