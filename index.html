@@ -18,7 +18,7 @@
     </header>
     <main>
         <h2>Corrente de Projeto</h2>        
-        <p>Corrente de projeto (In) é calculada considerando apenas a potência instalada.</p>
+        <!-- <p>Corrente de projeto (In) é calculada considerando apenas a potência instalada.</p> -->
         <label for="correnteDeProjeto">In = </label>
         <input type="number" id="correnteDeProjeto" min="0" max="1000" value="100" class="input-padrao">
         <label for="correnteDeProjeto"> A </label>
@@ -41,10 +41,10 @@
             <!--Descrição do metodo -->
         </fieldset>
         <h2>Material Condutor</h2>        
-        <p>A resistividade do alumínio é 65% mais alta que a do cobre.Por consequência,
+        <!-- <p>A resistividade do alumínio é 65% mais alta que a do cobre.Por consequência,
             para conduzir a mesma corrente elétrica,um cabo com condutor de alumínio vai
             utilizar uma seção nominal maior do que a de um cabo de cobre.
-            Por outro lado, o alumínio é cerca de três vezes mais leve que o cobre por unidade de massa.</p>
+            Por outro lado, o alumínio é cerca de três vezes mais leve que o cobre por unidade de massa.</p> -->
         <fieldset>
             <select name="material" id="selecaoMaterial">
                 <option value="COBRE">Cobre</option>
@@ -52,12 +52,12 @@
             </select>
         </fieldset>
         <h2>Isolação</h2>        
-        <p> O PVC é um material termoplástico, pois amolece quando aquecido mas não perde suas características físicas,
+        <!-- <p> O PVC é um material termoplástico, pois amolece quando aquecido mas não perde suas características físicas,
             suportando temperatura de operação normal de até 70 °C no condutor.<br>
             O XLPE (polietileno reticulado) e o HEPR (borracha etileno-propileno)
             são materiais que sofreram um processo de vulcanização (reticulação),
             tornando-se termofixos. Não amolecem com o calor e suportam temperaturas de operação mais elevadas, de 90
-            °C.</p>
+            °C.</p> -->
         <fieldset>
             <select name="isolacao" id="selecaoIsolacao">
                 <option value="EPR"> EPR/XLPE</option>
@@ -67,7 +67,7 @@
         <h2>Número de condutores carregados</h2>
         <div class="tipoDeInstalacao">
             <fieldset>
-                <p>
+                <!-- <p>
                     O número de condutores carregados a ser considerado é o dos
                     condutores efetivamente percorridos por corrente. Nos circuitos trifásicos com neutro, quando puder
                     ser
@@ -76,7 +76,7 @@
                     harmônicas no condutor neutro, este não deve ser computado, considerando-se, portanto, para o
                     circuito, 3
                     condutores carregados.
-                </p>
+                </p> -->
                 <select name="nCondutores" id="nCondutores">
                     <option value="3n">a - circuito trifásico sem neutro = 3 condutores carregados</option>
                     <option value="3n">b - circuito trifásico com neutro = 4 condutores carregados</option>
