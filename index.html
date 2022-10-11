@@ -17,14 +17,17 @@
         <h1>Calculo de Cabos de Baixa tensão</h1>
     </header>
     <main>
-        <h2>Corrente de Projeto</h2>        
+        <h2>Corrente de Projeto</h2>
         <!-- <p>Corrente de projeto (In) é calculada considerando apenas a potência instalada.</p> -->
-        <label for="correnteDeProjeto">In = </label>
-        <input type="number" id="correnteDeProjeto" min="0" max="1000" value="100" class="input-padrao">
-        <label for="correnteDeProjeto"> A </label>
-
-        <h2>Metodo de instalação</h2>        
-        <p>Para saber mais sobre metôdos de instalação <a target="_blank" href="https://docente.ifrn.edu.br/jeangaldino/disciplinas/2015.1/instalacoes-eletricas/nbr-5410">Clique aqui</a></p>
+        <div class="containerCorrenteProjeto">
+            <label for="correnteDeProjeto">In = </label>
+            <input type="number" id="correnteDeProjeto" min="0" max="1000" value="100" class="input-padrao">
+            <label for="correnteDeProjeto"> A </label>
+        </div>
+        <h2>Metodo de instalação</h2>
+        <p>Para saber mais sobre metôdos de instalação <a target="_blank"
+                href="https://docente.ifrn.edu.br/jeangaldino/disciplinas/2015.1/instalacoes-eletricas/nbr-5410">Clique
+                aqui</a></p>
         <fieldset>
             <select name="Metodo" id="selecaoMetodo">
                 <option value="A1">A1</option>
@@ -40,7 +43,7 @@
 
             <!--Descrição do metodo -->
         </fieldset>
-        <h2>Material Condutor</h2>        
+        <h2>Material Condutor</h2>
         <!-- <p>A resistividade do alumínio é 65% mais alta que a do cobre.Por consequência,
             para conduzir a mesma corrente elétrica,um cabo com condutor de alumínio vai
             utilizar uma seção nominal maior do que a de um cabo de cobre.
@@ -51,7 +54,7 @@
                 <option value="AL">Alumínio</option>
             </select>
         </fieldset>
-        <h2>Isolação</h2>        
+        <h2>Isolação</h2>
         <!-- <p> O PVC é um material termoplástico, pois amolece quando aquecido mas não perde suas características físicas,
             suportando temperatura de operação normal de até 70 °C no condutor.<br>
             O XLPE (polietileno reticulado) e o HEPR (borracha etileno-propileno)
@@ -88,18 +91,20 @@
             </fieldset>
         </div>
         <h2>Correção de Temperatura</h2>
-        <label for="correcaoTemp">Temperatura </label>
-        <select name="localInsta" id="localInsta">
-            <legend>Temperatura Ambiente ou do Solo ?</legend>
-            <option value="ambiente"> Ambiente </option>
-            <option value="solo"> do Solo </option>
-        </select>
-        <input type="number" id="correcaoTemp" min="10" max="50" value="20" class="input-padrao">
-        <label for="correcaoTemp">°C</label>
+        <div class="conteinerCorrecaoTemp">
+            <label for="correcaoTemp">Temperatura </label>
+            <select name="localInsta" id="localInsta">
+                <legend>Temperatura Ambiente ou do Solo ?</legend>
+                <option value="ambiente"> Ambiente </option>
+                <option value="solo"> do Solo </option>
+            </select>
+            <input type="number" id="correcaoTemp" min="10" max="50" value="20" class="input-padrao">
+            <label for="correcaoTemp">°C</label>
+        </div>
         <div class="conteinerAgrupamentoCircuitos">
             <h2>Agrupamento de circuitos </h2>
             <p class="aviso">Existem outros metodos de calculo de agrupamento de circuitos descritos na NBR5410</p>
-            <label for="ReferenciasAgrupamentoCircuitos">Selecione referência :</label>
+            <label for="ReferenciasAgrupamentoCircuitos" class="especialLabel">Selecione referência :</label>
             <select name="ReferenciaAgrupamentoCircuitos" id="ReferenciasAgrupamentoCircuitos">
                 <option value="Ref1">Em feixe: ao ar livre ou sobre superfície; embutidos; em conduto fechado | Métodos
                     A até F</option>
@@ -110,21 +115,23 @@
                 <option value="Ref5">Camada única sobre leito, suporte, etc.| Método F</option>
             </select>
             <br>
-            <label for="numeroDeCircuitos">Numero de Circuitos : </label>
-            <select id="numeroDeCircuitos">                
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9 a 11</option>
-                <option value="10">12 a 15</option>
-                <option value="11">16 a 19</option>
-                <option value="12">>=20</option>
-            </select>
+            <div class="containerNumeroDeCirc">
+                <label for="numeroDeCircuitos">Numero de Circuitos : </label>
+                <select id="numeroDeCircuitos">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9 a 11</option>
+                    <option value="10">12 a 15</option>
+                    <option value="11">16 a 19</option>
+                    <option value="12">>=20</option>
+                </select>
+            </div>
             <button id="calcularGeral">Calcular</button>
             <p class="resultado">...</p>
             <p class="aviso">* Observar Seção Mínima dos Condutores</p>
@@ -132,33 +139,59 @@
         <div class="containerQuedaDetensao">
 
             <h2> Cálculo de Queda de Tensão </h2>
-            <label for="secaoReta_quedaDeTensao" class="labelTitulo">Seção reta :</label>
-            <input type="number" id="secaoReta_quedaDeTensao" value="50" class="input-padrao" min="0.5" max="1000">
-            <label for="secaoReta_quedaDeTensao">mm²</label>
-            <label for="tensaoNominal" class="labelTitulo">Tensão nominal da instalação :</label>
-            <input type="number" id="tensaoNominal" value="220" class="input-padrao" min="1.5" max="1000">
-            <label for="tensaoNominal">V</label>
-            <label for="comprimento_Circuito" class="labelTitulo">Comprimento circuito :</label>
-            <input type="number" id="comprimento_Circuito" value="200" class="input-padrao">
-            <label for="comprimento_Circuito">(Metros)</label>
-            <label for="diametro_Condutor" class="labelTitulo">Diâmetro do condutor :</label>
-            <input type="number" id="diametro_Condutor" value="9.2" class="input-padrao">
-            <label for="diametro_Condutor">(mm)</label>
-            <p class="aviso">* Diâmetro gerado automaticamente , para mais precisão consultar a tabela de cabos do
-                fabricante. </p>
-            <label for="distancia_Entre_Eixos" class="labelTitulo">Distância entre eixos :</label>
-            <input type="number" id="distancia_Entre_Eixos" value="200" class="input-padrao">
-            <label for="distancia_Entre_Eixos">(mm)</label>
-            <label for="cosPhi" class="labelTitulo">Cos φ :</label>
-            <input type="number" id="cosPhi" value="0.95" class="input-padrao">
-            <div class="subConteinerQuedaDeTensao">
-                <h3>Metodos de calculo de GMD</h3>
-                <p>Valor da raiz cubíca ³√2 = 1,2599210</p>
-                <img class="MetodosGMD" src="./imagens/GMDMetodos_preview_rev_1.png">
-                <p class="aviso"> * Deve ser usado o mesmo valor utilizado em "Distância entre eixos".<br>Valor padrão para 200mm</p>
+
+            <div class="conteinerLabelQDT">
+                <label for="secaoReta_quedaDeTensao" class="labelTitulo">Seção reta :</label>
+                <input type="number" id="secaoReta_quedaDeTensao" value="50" class="input-padrao" min="0.5" max="1000">
+                <label for="secaoReta_quedaDeTensao">mm²</label>
+
+
+                <label for="tensaoNominal" class="labelTitulo">Tensão nominal da instalação :</label>
+
+                <input type="number" id="tensaoNominal" value="220" class="input-padrao" min="1.5" max="1000">
+                <label for="tensaoNominal">V</label>
+
+                <label for="comprimento_Circuito" class="labelTitulo">Comprimento circuito :</label>
+
+                <input type="number" id="comprimento_Circuito" value="200" class="input-padrao">
+                <label for="comprimento_Circuito">(Metros)</label>
+
+                <label for="diametro_Condutor" class="labelTitulo">Diâmetro do condutor :</label>
+
+                <input type="number" id="diametro_Condutor" value="9.2" class="input-padrao">
+                <label for="diametro_Condutor">(mm)</label>
             </div>
-            <label for="_gmd" class="labelTitulo">GMD</label>
-            <input type="number" id="_gmd" value="251.984" class="input-padrao">
+            <p class="aviso">* Diâmetro gerado automaticamente , para mais precisão consultar a tabela de cabos
+                do
+                fabricante. </p>
+            <div class="conteinerLabelQDT">
+                <label for="distancia_Entre_Eixos" class="labelTitulo">Distância entre eixos :</label>
+
+                <input type="number" id="distancia_Entre_Eixos" value="200" class="input-padrao">
+                <label for="distancia_Entre_Eixos">(mm)</label>
+
+                <label for="cosPhi" class="labelTitulo">Cos φ :</label>
+
+                <input type="number" id="cosPhi" value="0.95" class="input-padrao">
+            </div>
+
+            <div class="subConteinerQuedaDeTensao">
+                <p>Metodos de calculo de GMD</p>
+                <p>Valor da raiz cubíca ³√2 = 1,2599210</p>
+                <div class="imagem">
+                    <img class="MetodosGMD" src="./imagens/GMDMetodos_preview_rev_1.png">
+                </div>
+
+                <p class="aviso"> * Deve ser usado o mesmo valor utilizado em "Distância entre eixos".<br>Valor
+                    padrão
+                    para 200mm</p>
+            </div>
+            <div class="conteinerLabelQDT">
+                <label for="_gmd" class="labelTitulo">GMD</label>
+
+                <input type="number" id="_gmd" value="251.984" class="input-padrao">
+            </div>
+
             <p class="resultado3">
                 ...
             </p>

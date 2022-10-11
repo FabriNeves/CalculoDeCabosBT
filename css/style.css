@@ -1,5 +1,4 @@
 body {
-    
     font-family: 'Montserrat', sans-serif;
     background: whitesmoke;
     width: 640px;
@@ -22,13 +21,6 @@ h2 {
     font-weight: 300;
 }
 
-h3 {
-    
-    font-size: 18px;
-    font-weight: 300;
-    margin: 1em 0;
-}
-
 p {
     margin: 1em 0;
     line-height: 1.5em;
@@ -45,6 +37,10 @@ input {
     border: solid 1px black;
     border-radius: 2px;
     box-shadow: 1px 1px 2px black;
+}
+
+#secaoReta_quedaDeTensao{
+    background:  lightgreen;
 }
 
 #selecaoMaterial,
@@ -74,14 +70,10 @@ p .Resultado {
     color: blueviolet;
     line-height: 1em;
 }
-
 info {
     color: red;
 }
-label {
-    font-weight: 100;
-}
-.labelTitulo {
+.labelTitulo { 
     display: block;
     margin: 0.5em 0;
 }
@@ -93,11 +85,10 @@ label {
 
 }
 
-.MetodosGMD {
+.MetodosGMD {    
     border: solid 0.5px black;
-    border-radius: 5px;
-    margin-bottom: 30px;
-
+    border-radius: 5px;  
+    
 }
 
 button {
@@ -112,8 +103,8 @@ button {
     border: solid 1px SeaGreen;
     border-radius: 2px;
     box-shadow: 1px 1px 2px black;
-
-
+      
+    
 }
 
 button:hover {
@@ -121,20 +112,39 @@ button:hover {
     font-size: 23px;
 }
 
-button:active {
+button:active{
     transform: scale(1.1);
 }
 
 @media screen and (max-width: 480px) {
-    body {
-        width: 480px;
+    body{
+        width: 100%;
     }
-
-    #nCondutores,
-    #ReferenciasAgrupamentoCircuitos {
-        width: 480px;
-    }
-    h1,h2,h3,p{
+    p,h1,h2,h3{
         text-align: center;
-    }   
+    }
+    #nCondutores,#ReferenciasAgrupamentoCircuitos{
+        width: 100%;
+    }
+    .conteinerLabelQDT,#selecaoIsolacao,#selecaoMaterial,#selecaoMetodo{
+        position: relative;
+        left: 20%;
+    }
+    .imagem{
+        text-align: center;
+    }
+    .containerNumeroDeCirc{
+        text-align: center;
+    }
+    .conteinerCorrecaoTemp{
+        text-align: center;
+    }
+    .especialLabel{
+        display: block;
+        text-align: center;        
+    }
+    .containerCorrenteProjeto{
+        position: relative;
+        left: 20%;
+    }
 }
