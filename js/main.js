@@ -25,6 +25,7 @@ const resultado3 = document.querySelector(".resultado3");
 const secaoReta_quedaDeTensao = document.querySelector("#secaoReta_quedaDeTensao")
 
 
+
 import { opcaoParaABCD, opcaoParaE, opcaoParaF, opcaoParaG } from "./html.js";
 import { indiceMetodosA_D, indiceMetodosE_G, procuraCondutorCorrespondente } from "./tabelasMetodosABCEFG.js";
 import { tabela_AgrupamentoDeCircuitos } from "./agrupamentoDeCircuitos.js"
@@ -32,6 +33,7 @@ import { correcaoDeTemperatura } from "./FatorTempTabelas.js";
 import { MainFuncaoCalculoDeQueda, quedaDeTensaoPorcento, secoesRetasDisponiveis } from "./funcoesDeQuedaDeTensao.js";
 import { retornaDiametroDoCondutor } from "./diametroCondutor.js";
 import { retornaOPrimeiroValorMaior_e } from "./percorrerListasMetodo.js";
+
 
 function calcularSecaoCabo(correnteProjeto) {
     // Variaveis para calcular seção do cabo 
@@ -53,9 +55,60 @@ function calcularSecaoCabo(correnteProjeto) {
     a = a / fatorDeCorrecao;
 
     const result = procuraCondutorCorrespondente(a, b, c, d, e);
-    const resultadoTexto = `<p class="Resultado">Corrente de Projeto :<info>${correnteProjeto}A</info></p><p class="Resultado"> Metodo de Instalação :<info>${metodoInstalacao.value}</info></p><p class="Resultado">Material Condutor :<info>${materialCondutorSelecionado.value}</info></p><p class="Resultado">Material de Isolação :<info>${materialIsolacao.value}</info></p><p class="Resultado">Numero de Condutores Carregados :<info>${numeroCondutores.value.substring(0, 1)}</info></p><p class="Resultado">Para temperatura do<info> ${localInstalacaoAmb.value} </info>de <info>
-    ${correcaoTemp.value}ºC</info> valor de :<info> ${valorCorrecao} </info></p><p class="Resultado">Fator de agrupamento de circuitos :<info> ${fatorDeCorrecao} </info></p><p class="Resultado">Seção reta do Cabo :<info> ${result}mm²</info></p>`;
-
+    const resultadoTexto = `
+    <table>
+        <tr>
+            <th>Corrente de Projeto </th>
+            <th>
+                <info>${correnteProjeto}A</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Método de Instalação</th>
+            <th>
+                <info>${metodoInstalacao.value}</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Material Condutor </th>
+            <th>
+                <info>${materialCondutorSelecionado.value}</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Material de Isolação </th>
+            <th>
+                <info>${materialIsolacao.value}</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Número de Condutores Carregados </th>
+            <th>
+                <info>${numeroCondutores.value.substring(0, 1)}</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Para temperatura do<info> ${localInstalacaoAmb.value} </info>de <info>
+                    ${correcaoTemp.value}ºC</info>
+            </th>
+            <th>
+                <info> ${valorCorrecao} </info>
+            </th>
+        </tr>
+        <tr>
+            <th>Fator de agrupamento de circuitos</th>
+            <th>
+                <info> ${fatorDeCorrecao}</info>
+            </th>
+        </tr>
+        <tr>
+            <th>Seção reta do Condutor</th>
+            <th>
+                <info> ${result}mm²</info>
+            </th>
+        </tr>
+    </table>
+    `;
     diametro_Condutor_.value = retornaDiametroDoCondutor(result).toFixed(2); //Valor Aproximado 
     return [result, resultadoTexto];
 }
@@ -122,6 +175,6 @@ function CalculaQuedaDeTensao() {
     console.log(a, b, c, d, e, f, g, h, i, j);
 
     const resultado = MainFuncaoCalculoDeQueda(a, b, c, d, e, f, g, h, i, j);
-    return "<p class='Resultado'>Queda de tensão de :<info>" + quedaDeTensaoPorcento(resultado, tensaoNominal.value).toFixed(2) + "%</info></p>";
+    return "<p class='Resultado'>Queda de tensão de :<info>" + quedaDeTensaoPorcento(resultado, tensaoNominal.value).toFixed(2) + "%</info>"+" <br> Distância :<info>"+d+"</info> Km" + "<br>Corrente de Projeto de <info>: " +c+"</info> A";
 
 }

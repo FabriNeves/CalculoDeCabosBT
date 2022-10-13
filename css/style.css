@@ -64,14 +64,20 @@ input {
     border-radius: 2px;
     box-shadow: 1px 1px 2px black;
 }
-
-p .Resultado {
-    margin: 0.5em 0;
-    color: blueviolet;
-    line-height: 1em;
+table{
+    margin: 0 auto;
+    border: 2px solid black;    
+    box-shadow: 1px 1px 2px black;
+    background: lightgray;
 }
+
+th,td {
+    border: 1px solid black;
+    padding: 0 2px 0 2px;
+}
+
 info {
-    color: red;
+    color: royalblue;
 }
 .labelTitulo { 
     display: block;
@@ -80,7 +86,7 @@ info {
 
 .aviso {
     color: red;
-    font-size: x-small;
+    font-size: small;
     font-weight: 200;
 
 }
