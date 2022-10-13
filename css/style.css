@@ -126,9 +126,12 @@ button:active{
     #nCondutores,#ReferenciasAgrupamentoCircuitos{
         width: 100%;
     }
-    .conteinerLabelQDT,#selecaoIsolacao,#selecaoMaterial,#selecaoMetodo{
+    .conteinerLabelQDT{
         position: relative;
         left: 20%;
+    }
+    .part1 {
+        text-align: center;
     }
     .imagem{
         text-align: center;
@@ -142,9 +145,5 @@ button:active{
     .especialLabel{
         display: block;
         text-align: center;        
-    }
-    .containerCorrenteProjeto{
-        position: relative;
-        left: 20%;
-    }
+    }    
 }
